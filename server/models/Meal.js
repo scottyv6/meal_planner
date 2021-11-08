@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const mealSchema = new Schema({
+  mealType: {
+    type: String,
+    required: 'Enter a meal selection',
+    
+  },
   category: {
     type: String,
     required: 'Select a meal type.',    
@@ -13,9 +18,16 @@ const mealSchema = new Schema({
   notes:{
     type: String,
   },
+  date: {
+    type: Date,
+    required: true,
+  },
   dishes: [
     {
-      name: {
+      _id: {
+        type: String
+      },
+      dishName: {
         type: String,
         required: true,
         minlength: 1,

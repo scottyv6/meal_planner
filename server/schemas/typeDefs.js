@@ -5,25 +5,26 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    password: String
-    thoughts: [Thought]!
+    password: String    
   }
 
-  type Thought {
+  type Dish {
+    name: String
+    recipeLink: String
+    notes: String
+  }
+
+  type Meal {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    mealType: String
+    category: String
+    userId: User
+    notes: String
+    date: String   
+    dishes: [Dish]
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
-
+  
   type Auth {
     token: ID!
     user: User
@@ -32,19 +33,30 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    meals: [Meal]
+    meal(mealId: ID!): Meal
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    
   }
 `;
 
 module.exports = typeDefs;
+
+
+// type Mutation {
+//   addUser(email: String!, password: String!): Auth
+//   login(email: String!, password: String!): Auth
+//   addMeal(mealType: String!, category: String!, UserId, ID!, notes: String, dishes: [Dish]): Meal
+//   removeMeal(mealId: ID!): Meal
+//   updateMeal(mealId: ID!, mealType: String!, category: String!, UserId, ID!, notes: String, dishes: [Dish]): Meal
+//   addDish(mealId: ID!, dishName: String!, recipeLink: String, notes: String,): Dish
+//   updateDish(mealId: ID!, dishId: ID!, dishName: String!, recipeLink: String, notes: String,): Dish
+//   removeDish(mealId: ID!, dishId: ID!)
+
+// }
+// `;

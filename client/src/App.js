@@ -11,14 +11,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
+import Meal from './pages/Meal';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Scheduler from './components/Scheduler';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
@@ -40,6 +41,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -57,14 +60,8 @@ function App() {
               <Signup />
             </Route>
             <Route exact path="/me">
-              <Profile />
-            </Route>
-            <Route exact path="/profiles/:username">
-              <Profile />
-            </Route>
-            <Route exact path="/thoughts/:thoughtId">
-              <SingleThought />
-            </Route>
+              <Meal />
+            </Route>            
           </div>
           <Footer />
         </div>

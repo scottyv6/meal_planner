@@ -15,46 +15,38 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
-  }
-`;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+
+// export const QUERY_ME = gql`
+//   query me {
+//     me {
+//       _id
+//       username
+//       email
+//       thoughts {
+//         _id
+//         thoughtText
+//         thoughtAuthor
+//         createdAt
+//       }
+//     }
+//   }
+// `;
+
+export const QUERY_MEALS = gql`
+  query getMeals ($userId: ID!{
+    meals (userId: $userID) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
+      category
+      userID
+      notes
+      date
+      dishes {
         _id
-        commentText
-        commentAuthor
-        createdAt
+        dishName
+        recipeLink
+        notes
       }
     }
   }
-`;
-
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      username
-      email
-      thoughts {
-        _id
-        thoughtText
-        thoughtAuthor
-        createdAt
-      }
-    }
-  }
-`;
+`
