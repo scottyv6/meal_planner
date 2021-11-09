@@ -1,24 +1,56 @@
 import React from 'react';
-//import { useQuery } from '@apollo/client';
+import { Redirect, useParams } from 'react-router-dom';
+import { useLazyQuery } from '@apollo/client';
 
-////import ThoughtList from '../components/ThoughtList';
-//import ThoughtForm from '../components/ThoughtForm';
+import MealList from '../components/MealList'
+import { QUERY_MEALS } from '../utils/queries';
 
-//import { QUERY_THOUGHTS } from '../utils/queries';
+import Auth from '../utils/auth';
 
-const Home = () => {
-  // const { loading, data } = useQuery(QUERY_THOUGHTS);
-  // const thoughts = data?.thoughts || [];
+const Meal = () => {
+  const { username: userParam } = useParams();
+
+  
+  const [ getMeals, { loading, data } ] = useLazyQuery(QUERY_MEALS);
+
+  
+
+  if (!Auth.loggedIn()) {
+    return (
+      <main>
+        <div className="flex-row justify-center">
+          Not logged in
+        </div>    
+      </main>
+    );
+  }
+
+  const authUserId = Auth.getUserId();
+  console.log("authUserId is", authUserId);
+  
+  getMeals({
+    variables: { authUserId },
+  });
+
+  const meals = data;
+  console.log('meals:', meals);
+  
+  
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main>
       <div className="flex-row justify-center">
-        meals
+        meals in meal page
+        <MealList 
+          meals={meals}
+        />
       </div>
-      
-      
     </main>
   );
 };
 
-export default Home;
+export default Meal;

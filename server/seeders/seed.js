@@ -34,8 +34,22 @@ db.once('open', async () => {
           $addToSet: {
             userId: user._id,
           },
+          
         }
       );
+      
+      // for (let i = 0; i < mealSeeds.dishes.length; i++) {
+      //   const dish = await Meal.dishes.findOneAndUpdate(
+      //     {_id: _id},
+      //    {
+      //     $addToSet: {
+      //       dishes._id: _id,
+      //     },
+          
+      //   }
+      // );
+      // }
+        
     }
     
   } catch (err) {

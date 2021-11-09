@@ -9,7 +9,8 @@ const typeDefs = gql`
   }
 
   type Dish {
-    name: String
+    _id:ID
+    dishName: String
     recipeLink: String
     notes: String
   }

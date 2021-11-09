@@ -6,39 +6,28 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
       }
     }
-  }
 `;
 
 
 
-// export const QUERY_ME = gql`
-//   query me {
-//     me {
-//       _id
-//       username
-//       email
-//       thoughts {
-//         _id
-//         thoughtText
-//         thoughtAuthor
-//         createdAt
-//       }
-//     }
-//   }
-// `;
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email      
+    }
+  }
+`;
 
 export const QUERY_MEALS = gql`
-  query getMeals ($userId: ID!{
-    meals (userId: $userID) {
+  query getMeals ($userId: ID!){
+    meals (userId: $userId) {
       _id
       category
-      userID
+      userId
       notes
       date
       dishes {
