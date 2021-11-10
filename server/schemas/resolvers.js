@@ -10,8 +10,10 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
-    meals: async () => {
-      return Meal.find().populate("userId");
+
+    // filter by userId
+    meals: async (parent, {userId}) => {
+      return Meal.find({ userId: userId }).populate("userId");
     },
     
     me: async (parent, args, context) => {

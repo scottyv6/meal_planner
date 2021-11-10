@@ -34,8 +34,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    meals: [Meal]
-    meal(mealId: ID!): Meal
+    meals(userId: ID!): [Meal]
+    meal(userId: ID!): Meal
     me: User
   }
 

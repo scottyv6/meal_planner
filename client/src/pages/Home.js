@@ -12,8 +12,7 @@ const Meal = () => {
 
   
   const [ getMeals, { loading, data } ] = useLazyQuery(QUERY_MEALS);
-
-  
+  console.log('data 1st try:', data);
 
   if (!Auth.loggedIn()) {
     return (
@@ -29,11 +28,12 @@ const Meal = () => {
   console.log("authUserId is", authUserId);
   
   getMeals({
-    variables: { authUserId },
+    variables: { userId: authUserId },
   });
 
   const meals = data;
   console.log('meals:', meals);
+  console.log('data:', data);
   
   
 

@@ -26,8 +26,11 @@ export const QUERY_MEALS = gql`
   query getMeals ($userId: ID!){
     meals (userId: $userId) {
       _id
+      mealType
       category
-      userId
+      userId {
+        _id
+      }
       notes
       date
       dishes {

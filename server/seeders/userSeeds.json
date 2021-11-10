@@ -2,22 +2,22 @@
   {
     "username": "Fred Smith",
     "email": "fred@mail.com",
-    "password": "password01"
+    "password": "password"
   },
   {
     "username": "Bill Bloggs",
     "email": "bill@mail.com",
-    "password": "password02"
+    "password": "password"
   },
   {
     
     "username": "Mary Jane",
     "email": "mary@mail.com",
-    "password": "password03"
+    "password": "password"
   },
   {
     "username": "jane Doe",
     "email": "jane@mail.com",
-    "password": "password04"
+    "password": "password"
   }
 ]
