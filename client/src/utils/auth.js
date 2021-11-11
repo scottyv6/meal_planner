@@ -28,8 +28,8 @@ class AuthService {
   }
 
   getUserId() {
-    const decoded = decode(localStorage.getItem('id_token'));
-    return decoded.data._id;
+    const decodedUser = decode(localStorage.getItem('id_token'));
+    return decodedUser.data._id;
   }
 
   login(idToken) {

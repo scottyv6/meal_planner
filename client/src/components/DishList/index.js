@@ -8,10 +8,10 @@ const DishList = ({ dishes = [] }) => {
 
   return (
     <>
-      <div className="flex-row my-4">
+      <div >
         {dishes && 
             dishes.map((dish) => (
-                <grid celled>
+                <Grid celled key={dish._id? dish._id : Math.floor(Math.random() * 10000)}>
                     <Grid.Row>
                         <Grid.Column width={3}>
                             Dish: {dish.dishName}
@@ -26,7 +26,7 @@ const DishList = ({ dishes = [] }) => {
                             Notes: {dish.notes}
                         </Grid.Column>
                     </Grid.Row>
-                </grid>
+                </Grid>
             ))
         }
       </div>

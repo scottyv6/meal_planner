@@ -10,22 +10,8 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
 
-    //await Meal.create(mealSeeds);
-
-    // await Meal.find().forEach(function() {
-    //   const { _id } = User.findOne()
-    //     {
-    //       $addToSet: {
-    //         userID : _id
-    //       }
-    //     }
-    //       })
-
     const user = await User.findOne()
-    console.log("id is", user);
-
-
-
+        
     for (let i = 0; i < mealSeeds.length; i++) {
       const { _id } = await Meal.create(mealSeeds[i]);
       const meal = await Meal.findOneAndUpdate(
@@ -36,20 +22,8 @@ db.once('open', async () => {
           },
           
         }
-      );
+      );  
       
-      // for (let i = 0; i < mealSeeds.dishes.length; i++) {
-      //   const dish = await Meal.dishes.findOneAndUpdate(
-      //     {_id: _id},
-      //    {
-      //     $addToSet: {
-      //       dishes._id: _id,
-      //     },
-          
-      //   }
-      // );
-      // }
-        
     }
     
   } catch (err) {

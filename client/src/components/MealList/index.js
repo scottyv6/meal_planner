@@ -1,32 +1,35 @@
 import React from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import DishList from '../DishList';
 
 const MealList = ({ 
-    meals,
+    meals
 }) => {
-    // if (!meals.length) {
-    //     return <h3>You have not added any meals yet</h3>
-    // }
-
+    if (!meals.length) {
+        console.log("meals in meallist", meals);
+        console.log("meals.length", meals.length);
+        return <h3>You have not added any meals yet</h3>
+    }
+    console.log('meals in meallist', meals);
     return (
         
-        <Card>
+        <Grid>
             {meals && 
                 meals.map((meal) => (
-                    <>
+                    <div key={meal._id}>
                         <Card.Header>Meal: {meal.mealType}
-                            <span> {meal.date}</span>
+                            <span> {new Date(meal.date).toDateString()}</span>
                         </Card.Header>
+                        {console.log('meal in map', meal)}
                         <Card.Content> 
                             <Button>Add Dish</Button>
                             <DishList dishes={meal.dishes} />
                         </Card.Content>
-                    </>
+                    </div>
                 ))
             }
-        </Card>
+        </Grid>
        
     )
 }

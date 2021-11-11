@@ -23,3 +23,15 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_MEAL = gql`
+  mutation addMeal($mealType: String!, $category: String!, $UserId: ID!, $notes: String, $dishes: [Dish]) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
