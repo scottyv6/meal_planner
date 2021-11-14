@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid, Button} from 'semantic-ui-react'
 
 const DishList = ({ dishes = [] }) => {
   if (!dishes.length) {
@@ -11,18 +11,18 @@ const DishList = ({ dishes = [] }) => {
       <div >
         {dishes && 
             dishes.map((dish) => (
-                <Grid celled key={dish._id? dish._id : Math.floor(Math.random() * 10000)}>
-                    <Grid.Row>
+                <Grid style={{ background: '#b2e3f5'  }} celled key={dish._id? dish._id : Math.floor(Math.random() * 10000)}>
+                    <Grid.Row style={{ border: '1px solid #34a8eb', borderRadius: '25px' }} >
                         <Grid.Column width={3}>
                             Dish: {dish.dishName}
                         </Grid.Column>
-                        <Grid.Column width={3}>
-                            <Button>Delete</Button>
+                        <Grid.Column width={2}>
+                            <Button circular icon color='grey'>Delete</Button>
                         </Grid.Column>
-                        <Grid.Column width={3}>
+                        <Grid.Column width={4}>
                             Recipe Link: <a href={dish.recipeLink}>{dish.recipeLink}</a>
                         </Grid.Column>
-                        <Grid.Column width={3}>
+                        <Grid.Column container width={3}>
                             Notes: {dish.notes}
                         </Grid.Column>
                     </Grid.Row>
@@ -35,6 +35,3 @@ const DishList = ({ dishes = [] }) => {
 };
 
 export default DishList;
-
-
-{/* <h3>Dish{}: dish.name</h3> */}

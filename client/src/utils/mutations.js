@@ -25,13 +25,22 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_MEAL = gql`
-  mutation addMeal($mealType: String!, $category: String!, $UserId: ID!, $notes: String, $dishes: [Dish]) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
+  mutation addMeal($mealType: String!, $category: String!, $userId: ID!, $date: String!) {
+    addMeal(mealType: $mealType, category: $category, userId: $userId, date: $date) {
+      _id
+      mealType
+      category
+      userId {
         _id
-        username
       }
+      notes
+      date
+      dishes {
+        _id
+        dishName
+        recipeLink
+        notes
+      }      
     }
   }
 `;

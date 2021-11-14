@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Button, Grid } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Card, Button, Container } from 'semantic-ui-react';
 import DishList from '../DishList';
 
 const MealList = ({ 
@@ -14,23 +13,22 @@ const MealList = ({
     console.log('meals in meallist', meals);
     return (
         
-        <Grid>
+        <Container style={{  }}>
             {meals && 
                 meals.map((meal) => (
-                    <div key={meal._id}>
+                    <div style={{ background: '#a2e3f5', borderColor: 'blue', borderRadius: '25px', padding: '20px', margin: '20px' }} key={meal._id}>
                         <Card.Header>Meal: {meal.mealType}
-                            <span> {new Date(meal.date).toDateString()}</span>
+                            <Container textAlign='right'> {new Date(meal.date).toDateString()}</Container>
                         </Card.Header>
                         {console.log('meal in map', meal)}
                         <Card.Content> 
-                            <Button>Add Dish</Button>
+                            <Button color='teal' size='large'>Add Dish</Button>
                             <DishList dishes={meal.dishes} />
                         </Card.Content>
                     </div>
                 ))
             }
-        </Grid>
-       
+        </Container>       
     )
 }
 

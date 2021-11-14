@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MealForm from '../components/MealForm';
 import Auth from '../utils/auth';
 
 const AddMeal = () => {
@@ -12,7 +12,7 @@ const AddMeal = () => {
     return (
       <main>
         <div className="flex-row justify-center">
-          temp
+        <MealForm />
           
         </div>
       </main>

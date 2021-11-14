@@ -48,7 +48,10 @@ const resolvers = {
       return { token, user };
     },
     
-    
+    addMeal: async (parent, {mealType, category, userId, date}) => {
+      const meal = await Meal.create({mealType, category, userId, date});
+      return { meal};
+    }
     
     
   },

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Button} from 'semantic-ui-react'
 
 import Auth from '../../utils/auth';
 
@@ -23,9 +24,10 @@ const Header = () => {
               <Link className="btn btn-lg btn-info m-2" to="/meal">
                 Add Meal
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              
+              <Button color='grey' size='large' onClick={logout}>
                 Logout
-              </button>
+              </Button>
             </>
           ) : (
             <>
