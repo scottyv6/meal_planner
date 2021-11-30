@@ -78,15 +78,14 @@ const MealForm = ({ userId }) => {
         date: '',
     }); 
 
-    const [currentDate, setNewDate] = useState(null);
+    //const [currentDate, setNewDate] = useState(null);
 
     const onChange = (event, data) => {
-        const { name, value } = event.target;
-        setNewDate(data.value);
+        const { name, value } = data || event.target;        
         setFormState({...formState, [name]: value});
-        console.log('name in onchange', name)
-        console.log('value in onchange', value)
-        console.log('formState in onchange', formState)
+        // console.log('name in onchange', name)
+        // console.log('value in onchange', value)
+        // console.log('formState in onchange', formState)
 
     }
 
@@ -103,14 +102,11 @@ const MealForm = ({ userId }) => {
             userId: Auth.getProfile().data._id,            
             },
         });
-
         
         } catch (err) {
         console.error(err);
         }
     };
-
-
 
     return (
         <div>
@@ -118,34 +114,39 @@ const MealForm = ({ userId }) => {
                 <Form.Field name="date"> 
                     <label>Date</label>
                     
-                    <SemanticDatepicker  onChange={onChange} />   
-                    </Form.Field>
+                    <SemanticDatepicker  onChange={onChange} value={formState.date} name="date" /> 
+                </Form.Field>
+
                 <Form.Field  >
-                    <label>Meal Type</label>
+                    {/* <label>Meal Type</label> */}
                     <Dropdown
                         name="mealType"
+                        label="Meal Type"
                         placeholder='Meal Type'
                         fluid
                         selection
                         options={mealOptions}
                         onChange={onChange}
+                        value={formState.mealType}
                     />
                 </Form.Field>
-                <Form.Field  name="category">
+
+                <Form.Field >
                     <label>Meal Category</label>
                     <Dropdown
+                        name="category"
                         placeholder='Meal Category'
                         fluid
                         selection
                         options={categories}
                         onChange={onChange}
+                        value={formState.category}
                     />
                 </Form.Field>
                 <Button type='submit' to="/home">Submit</Button>
             </Form>
         </div>
-)
-
+    )
 }
 
 export default MealForm;
