@@ -33,7 +33,7 @@ const Home = () => {
          
         </div>
         <div style={{ margin: '20px' }}>
-        <img src={mealbg1} alt="Picure of food"></img>
+        <img src={mealbg1} alt="Food"></img>
         </div>    
       </main> 
     );

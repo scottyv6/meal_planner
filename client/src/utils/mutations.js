@@ -44,3 +44,24 @@ export const ADD_MEAL = gql`
     }
   }
 `;
+
+export const ADD_DISH = gql`
+  mutation addDish($dishName: String!, $recipeLink: String, $mealId: ID!, $notes: String) {
+    addDish(dishName: $dishName, recipeLink: $recipeLink, mealId: $mealId, notes: $notes) {
+      _id
+      mealType
+      category
+      userId {
+        _id
+      }
+      notes
+      date
+      dishes {
+        _id
+        dishName
+        recipeLink
+        notes
+      }      
+    }
+  }
+`;

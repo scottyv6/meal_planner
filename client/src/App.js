@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import AddMeal from './pages/AddMeal';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AddDish from './pages/AddDish';
 
 
 // Construct our main GraphQL API endpoint
@@ -60,7 +61,10 @@ function App() {
             </Route>
             <Route exact path="/meal">
               <AddMeal />
-            </Route>            
+            </Route>
+            <Route exact path="/dish/:id">
+              <AddDish />
+            </Route>           
           </div>
           <Footer />
         </div>

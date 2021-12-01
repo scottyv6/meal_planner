@@ -51,6 +51,18 @@ const resolvers = {
     addMeal: async (parent, {mealType, category, userId, date}) => {
       const meal = await Meal.create({mealType, category, userId, date});
       return { meal};
+    },
+
+    addDish: async (parent, {mealId, dishName, recipeLink, notes}) => {
+      const meal= await Meal.findOneAndUpdate(
+        {_id: mealId},
+        {
+          $push: {
+            dishes: {dishName, recipeLink, notes}
+          } 
+        } 
+      );
+      return { meal};
     }
     
     

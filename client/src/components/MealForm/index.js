@@ -7,6 +7,7 @@ import { ADD_MEAL } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import { Form, Button, Dropdown } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom'
 
 
 const MealForm = ({ userId }) => {
@@ -71,38 +72,34 @@ const MealForm = ({ userId }) => {
             text: 'Other',
             value: 'Other',
         },
-]
+    ]
+
+    let history = useHistory();
+
     const [formState, setFormState] = useState({
         mealType: '',
         category: '',
         date: '',
     }); 
 
-    //const [currentDate, setNewDate] = useState(null);
-
-    const onChange = (event, data) => {
+        const onChange = (event, data) => {
         const { name, value } = data || event.target;        
-        setFormState({...formState, [name]: value});
-        // console.log('name in onchange', name)
-        // console.log('value in onchange', value)
-        // console.log('formState in onchange', formState)
+        setFormState({...formState, [name]: value});       
 
     }
 
     const [addMeal] = useMutation(ADD_MEAL);
 
     const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log('formstate in handleFormSubmit', formState)
-        try {
-            console.log('Auth.getProfile().data._id', Auth.getProfile().data._id)
-        const { data } = await addMeal({
+        event.preventDefault();        
+        try {            
+            const { data } = await addMeal({
             variables: {
             ...formState,
             userId: Auth.getProfile().data._id,            
             },
         });
-        
+        history.push("/")
         } catch (err) {
         console.error(err);
         }
@@ -118,7 +115,7 @@ const MealForm = ({ userId }) => {
                 </Form.Field>
 
                 <Form.Field  >
-                    {/* <label>Meal Type</label> */}
+                    <label>Meal Type</label>
                     <Dropdown
                         name="mealType"
                         label="Meal Type"
@@ -143,7 +140,7 @@ const MealForm = ({ userId }) => {
                         value={formState.category}
                     />
                 </Form.Field>
-                <Button type='submit' to="/home">Submit</Button>
+                <Button type='submit' to="/">Submit</Button>
             </Form>
         </div>
     )

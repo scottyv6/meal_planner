@@ -1,14 +1,14 @@
 import React from 'react';
-import MealForm from '../components/MealForm';
+import DishForm from '../components/DishForm';
 
-const AddMeal = () => {   
+const AddDish = () => {   
     return (
       <main>
         <div className="flex-row justify-center">
-            <MealForm />          
+            <DishForm />          
         </div>
       </main>
     );
   };
   
-  export default AddMeal;
+  export default AddDish;

@@ -19,12 +19,14 @@ const DishList = ({ dishes = [] }) => {
                         <Grid.Column width={2}>
                             <Button circular icon color='grey'>Delete</Button>
                         </Grid.Column>
-                        <Grid.Column width={4}>
-                            Recipe Link: <a href={dish.recipeLink}>{dish.recipeLink}</a>
-                        </Grid.Column>
-                        <Grid.Column container width={3}>
-                            Notes: {dish.notes}
-                        </Grid.Column>
+                        <Grid.Column width={10}>
+                            <Grid.Row>
+                              Recipe Link:&nbsp; <a href={dish.recipeLink}>{dish.recipeLink}</a>
+                            </Grid.Row>
+                            <Grid.Row>
+                              Notes: {dish.notes}
+                            </Grid.Row>                            
+                        </Grid.Column>                        
                     </Grid.Row>
                 </Grid>
             ))
