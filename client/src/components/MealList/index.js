@@ -34,4 +34,4 @@ const MealList = ({
     )
 }
 
-export default MealList;
+export default MealList; 

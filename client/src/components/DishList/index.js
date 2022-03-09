@@ -21,7 +21,7 @@ const DishList = ({ dishes = [] }) => {
                         </Grid.Column>
                         <Grid.Column width={10}>
                             <Grid.Row>
-                              Recipe Link:&nbsp; <a href={dish.recipeLink}>{dish.recipeLink}</a>
+                              Recipe Link:&nbsp; <a href={dish.recipeLink} target="_blank" rel="noreferrer">{dish.recipeLink}</a>
                             </Grid.Row>
                             <Grid.Row>
                               Notes: {dish.notes}

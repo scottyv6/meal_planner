@@ -46,8 +46,8 @@ export const ADD_MEAL = gql`
 `;
 
 export const ADD_DISH = gql`
-  mutation addDish($dishName: String!, $recipeLink: String, $mealId: ID!, $notes: String) {
-    addDish(dishName: $dishName, recipeLink: $recipeLink, mealId: $mealId, notes: $notes) {
+  mutation addDish($dishName: String!, $_id: ID!  $recipeLink: String, $mealId: ID!, $notes: String) {
+    addDish(dishName: $dishName, _id: $_id, recipeLink: $recipeLink, mealId: $mealId, notes: $notes) {
       _id
       mealType
       category

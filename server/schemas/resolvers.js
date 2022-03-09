@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Meal } = require('../models');
 const { signToken } = require('../utils/auth');
+const { v4: uuidv4 } = require('uuid')
 
 const resolvers = {
   Query: {
@@ -54,11 +55,13 @@ const resolvers = {
     },
 
     addDish: async (parent, {mealId, dishName, recipeLink, notes}) => {
+      const dishId = uuidv4();
+      console.log('dishId', dishId);
       const meal= await Meal.findOneAndUpdate(
         {_id: mealId},
         {
           $push: {
-            dishes: {dishName, recipeLink, notes}
+            dishes: {dishName, dishId, recipeLink, notes}
           } 
         } 
       );
